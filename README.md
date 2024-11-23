@@ -1,17 +1,19 @@
 # MOVIE RECOMMENDATION SYSTEM
 
 ## Introduction
-    - This repo is our attempt to demo the use of tools like pandas, sns, matplotlib to extract useful ingisights and visuallize data, and the use of Mongodb for big data storage, and Apache Spark for efficient big data processing.
-    - We use the `movielens` dataset, which includes movie informations and movie ratings by multiple users, from the website https://movielens.org.
+- This repo is our attempt to demo the use of tools like pandas, sns, matplotlib to extract useful ingisights and visuallize data, and the use of Mongodb for big data storage, and Apache Spark for efficient big data processing.
+- We use the `movielens` dataset, which includes movie informations and movie ratings by multiple users, from the website https://movielens.org.
 
 ## Installation
------------------Requirements for the first notebook-----------------
+-----------------REQUIREMENTS FOR THE 1ST NOTEBOOK-----------------
 
 1. Download dataset from MovieLens
     - Due to limited resource, we use the `ml-latest-small` dataset, which can be downloaded via this link: https://files.grouplens.org/datasets/movielens/ml-latest-small.zip
     - You can also try the recommended MovieLens 32M dataset, which is much bigger and can provide better insights: https://files.grouplens.org/datasets/movielens/ml-32m.zip
+    
 
-----------------Requirements for the second notebook----------------
+----------------REQUIREMENTS FOR THE 2ND NOTEBOOK----------------
+
 2. Download Apache Spark
     - Method 1: which allows you to write Python applications for Spark but doesn’t include the full Spark setup. This installation doesn’t come pre-configured for Hadoop or other cluster managers, so it’s more commonly used for local or small-scale testing, which is what we'll do in this demo. So this is good enough.
         - `pip install pyspark`
@@ -43,5 +45,5 @@
     - Create a connection
 
 ## Further development
-    - We will try to use spark on a cluster of computers
-    - Build a web server as UI
+- We will try to use spark on a cluster of computers
+- Build a web server as UI
