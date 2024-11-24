@@ -4,6 +4,29 @@
 - This repo is our attempt to demo the use of tools like pandas, sns, matplotlib to extract useful ingisights and visuallize data, and the use of Mongodb for big data storage, and Apache Spark for efficient big data processing.
 - We use the `movielens` dataset, which includes movie informations and movie ratings by multiple users, from the website https://movielens.org.
 
+## Run the Movie Web App
+1. Setup a virtual environment and download dependencies
+    ```sh
+    cd Movie-App
+    python -m venv env
+    ./env/Scripts/activate
+    pip install -r requirements
+    ```
+
+2. Build the db
+    ```sh
+    python
+    >>> from app import app, db
+    >>> with app.app_context():
+    >>>     db.create_all()
+    ```
+    - Running this script will create an instance folder which contains the database
+
+3. Run the app
+    ```sh
+    python app.py
+    ```
+
 ## Installation
 -----------------REQUIREMENTS FOR THE 1ST NOTEBOOK-----------------
 
@@ -20,8 +43,10 @@
         - Then you can just directly import `pyspark` and run the python script directly via `python <script_name>.py`
     - Method 2 (we call it Spark&Hadoop :v): This approach gives you the full Spark distribution, including core components for cluster management, libraries (MLlib, Spark SQL, etc.), and support for different cluster managers (e.g., Hadoop/YARN). You have to set up the environment, configure it for your system, and ensure that it works with your chosen cluster manager. The following link includes Spark compiled with Hadoop 3, which enables you to use Spark on a Hadoop cluster.
         - Download Apache Spark distribution from this link: https://spark.apache.org/downloads.html
+
 3. Download JDK 8
     - Choose the package suitable for your OS: https://www.oracle.com/java/technologies/javase/javase8-archive-downloads.html
+
 4. Setup environment
     - Add environment variable:
         - JAVA_HOME = <path-to-your-jdk>
@@ -46,4 +71,6 @@
 
 ## Further development
 - We will try to use spark on a cluster of computers
-- Build a web server as UI
+- Build a web server using Flask
+    - A page for movie recommendation
+    - A page for movie filter
