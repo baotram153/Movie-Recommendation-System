@@ -1,0 +1,9 @@
+.header1 {
+    font-weight:bold;
+    font-size: 40px; /* Large font size */
+    color: #1d53be; /* A vibrant blue */
+    text-align: center; /* Center alignment */
+    padding-bottom: 0.5rem; /* Space between text and underline */
+    margin: 1rem 0; /* Spacing above and below */
+    letter-spacing: 2px; /* Spaced-out letters */
+}

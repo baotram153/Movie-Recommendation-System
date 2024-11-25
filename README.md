@@ -74,3 +74,4 @@
 - Build a web server using Flask
     - A page for movie recommendation
     - A page for movie filter
+        - Calculate average ratings

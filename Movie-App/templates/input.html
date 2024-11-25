@@ -7,17 +7,44 @@
 {% endblock %}
 
 {% block content %}
-    <h1>Movie Recommendation</h1>
-    <p>Get Movie Recommendations for a User</p>
+<div class="m-4">
+    <h1 class="header1">Movie Recommender System</h1>
     <form action="/recommend_movies" method="POST">
-        <label for="userId">User ID:</label>
+        <!-- <label for="userId">User ID:</label>
         <input type="text" id="userId" name="userId">
-        <button type="submit"> Recommend Movies </button>
+        <button type="submit"> Recommend Movies </button> -->
+
+        <div class="grid gap-6 mb-6 md:grid-cols-2 mx-4">
+            <div>
+                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="userId">User ID:
+                </label>
+                <div>
+                    <input type="text" id="userId" name="userId"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <button type="submit"
+                        class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded m-2">Recommend Movies
+                    </button>
+                </div>
+            </div>
+        </div>
     </form>
-    <p>Get User Recommendations for a Movie</p>
     <form action="/recommend_users" method="POST">
-        <label for="movieId">Movie ID:</label>
+        <!-- <label for="movieId">Movie ID:</label>
         <input type="text" id="movieId" name="movieId">
-        <button type="submit"> Recommend Users </button>
+        <button type="submit"> Recommend Users </button> -->
+        <div class="grid gap-6 mb-6 md:grid-cols-2 mx-4">
+            <div>
+                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="movieId">Movie ID:
+                </label>
+                <div>
+                    <input type="text" id="movieId" name="movieId"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <button type="submit"
+                        class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded m-2">Recommend Users
+                    </button>
+                </div>
+            </div>
+        </div>
     </form>
+</div>
 {% endblock %}

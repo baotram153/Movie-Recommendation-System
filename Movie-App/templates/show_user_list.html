@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 <!-- params: 
-    + recommended_movies: dictionary of movie id : movie title -->
+    + recommended_users: list of user ids
+    + movie_title
+    + movie_id
+    -->
 
 {% block title %}Movie Recommendation{% endblock %}
 
@@ -9,8 +12,9 @@
 {% endblock %}
 
 {% block content %}
-<h1>Movie Recommendation</h1>
-<p>Based on users' ratings of movie with ID {{ movie_id }}, we recommend the following users:</p>
+<div class="m-4">
+    <h1 class="header1">Movie Recommender System</h1>
+<p>Based on users' ratings of movie with ID {{ movie_id }}, title {{ movie_title }}, we recommend the following users:</p>
 
 
 <div class="relative overflow-x-auto">
@@ -33,5 +37,7 @@
         </tbody>
     </table>
 </div>
+</div>
+
 
 {% endblock %}

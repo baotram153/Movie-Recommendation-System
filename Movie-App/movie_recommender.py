@@ -66,6 +66,7 @@ class MovieRecommender:
         self.model = self.train()
         rmse = self.evaluate()
         print("Root-mean-square error = " + str(rmse))
+        self.df_avg_rating = self.df_ratings.groupBy("movieId").avg("rating")
 
     def train(self):
         # set cold start strategy to 'drop' to ensure we don't get NaN evaluation metrics
@@ -139,37 +140,24 @@ class MovieRecommender:
                 for user in movieRec.recommendations:
                     user_list.append(user.userId)
             return user_list
-
-# if __name__ == "__main__":
-    # spark = initialize_spark()
-    # df_ratings, df_movies = load_data(spark)
-    # training, test = preprocess_data(df_ratings, df_movies)
-    # model = train(training)
-    # rmse = evaluate(model, test)
-    # print("Root-mean-square error = " + str(rmse))
+        
+    def calculate_avg_rating (self):
+        avg_rating = self.df_avg_rating.limit(50)
+        avg_rating_with_title = avg_rating.join(self.df_movies, on="movieId", how="left").select("movieId", "title", "avg(rating)")
+        return json.dumps(avg_rating_with_title.collect())
     
-
-    # userRecs is an array of Row objects with the following fields: userId, recommendations, where recommendations is an array of Row objects with the following fields: movieId, rating
-    # find movie name for each movieId
-    # for userRec in userRecs:
-    #     for rec in userRec.recommendations:
-    #         movie_id = rec.movieId
-    #         movie_name = df_movies.filter(F.col("movieId") == movie_id).select("title").collect()[0].title
-    #         print(f"Movie name: {movie_name}")
-
-
-    # # save the model
-    # model.save("als_model")
-
-# # top 10 movie recommendations for each user
-# userRecs = model.recommendForAllUsers(10)
-# # top 10 user recommendations for each movie
-# movieRecs = model.recommendForAllItems(10)
-
-# # top 10 movie recommendations for a specified set of users
-# users = ratings.select(als.getUserCol()).distinct().limit(3)
-# userSubsetRecs = model.recommendForUserSubset(users, 10)
-
-# # top 10 user recommendations for a specified set of movies
-# movies = ratings.select(als.getItemCol()).distinct().limit(3)
-# movieSubSetRecs = model.recommendForItemSubset(movies, 10)
+    def calculate_rating_movie_id (self, id):
+        avg_rating_of_id = self.df_avg_rating.filter(F.col("movieId") == id).join(self.df_movies, on="movieId", how="left").select("movieId", "title", "avg(rating)")
+        logger.info(avg_rating_of_id)
+        return json.dumps(avg_rating_of_id.collect())
+    
+    def sort_ratings (self, desc=True):
+        if desc:
+            sorted_ratings = self.df_avg_rating.orderBy("avg(rating)", ascending=False).limit(50).join(self.df_movies, on="movieId", how="left").select("movieId", "title", "avg(rating)")
+        else:
+            sorted_ratings = self.df_avg_rating.orderBy("avg(rating)", ascending=True).limit(50).join(self.df_movies, on="movieId", how="left").select("movieId", "title", "avg(rating)")
+        return json.dumps(sorted_ratings.collect())
+    
+    def get_movie_by_id (self, movie_id):
+        movie_title = self.df_movies.filter(F.col("movieId") == movie_id).select("title").collect()[0].title
+        return movie_title

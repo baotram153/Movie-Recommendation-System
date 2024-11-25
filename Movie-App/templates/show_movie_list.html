@@ -5,12 +5,13 @@
 {% block title %}Movie Recommendation{% endblock %}
 
 {% block head %}
-<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
 {% endblock %}
 
 {% block content %}
-<h1>Movie Recommendation</h1>
-<p>Based preferences of user with ID {{ user_id }}, we recommend the following movies:</p>
+<div class="m-4">
+<h1 class="header1">Movie Recommender System</h1>
+<p class="m-2">Based preferences of user with ID {{ user_id }}, we recommend the following movies:</p>
 
 
 <div class="relative overflow-x-auto">
@@ -27,7 +28,7 @@
         </thead>
         <tbody>
             {% for movie_id, movie_title in recommended_movies.items() %}
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                     {{ movie_id }}
                 </th>
@@ -38,6 +39,7 @@
             {% endfor %}
         </tbody>
     </table>
+</div>
 </div>
 
 {% endblock %}
