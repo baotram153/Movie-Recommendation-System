@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+<!-- params: 
+    + recommended_movies: dictionary of movie id : movie title -->
+
+{% block title %}Movie Recommendation{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+{% endblock %}
+
+{% block content %}
+<h1>Movie Recommendation</h1>
+<p>Based on users' ratings of movie with ID {{ movie_id }}, we recommend the following users:</p>
+
+
+<div class="relative overflow-x-auto">
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+                <th scope="col" class="px-6 py-3">
+                    User ID
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user_id in recommended_users %}
+            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    {{ user_id }}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

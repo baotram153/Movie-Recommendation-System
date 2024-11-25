@@ -1,8 +1,6 @@
 '''Insert ratings.csv and movies.csv into MongoDB'''
-
 from pymongo import MongoClient
 import pandas as pd
-import os
 
 # load csv file into pandas DataFrame first
 ratings_df = pd.read_csv("../dataset/ml-latest-small/ratings.csv")

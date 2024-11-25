@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Movie Recommendation{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+{% endblock %}
+
+{% block content %}
+    <h1>Movie Recommendation</h1>
+    <p>Get Movie Recommendations for a User</p>
+    <form action="/recommend_movies" method="POST">
+        <label for="userId">User ID:</label>
+        <input type="text" id="userId" name="userId">
+        <button type="submit"> Recommend Movies </button>
+    </form>
+    <p>Get User Recommendations for a Movie</p>
+    <form action="/recommend_users" method="POST">
+        <label for="movieId">Movie ID:</label>
+        <input type="text" id="movieId" name="movieId">
+        <button type="submit"> Recommend Users </button>
+    </form>
+{% endblock %}
